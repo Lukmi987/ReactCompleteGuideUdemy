@@ -69,13 +69,24 @@ class App extends Component {
         </div>
       );
 
+      //Everything is JavaScript we change style dinamically , we can manipulate any javascript object
       style.backgroundColor = 'red';
+    }
+
+    //turn array of strings into one string, generic solution to manipulate dinamically
+    const classes = [];
+
+    if (this.state.persons.length <= 2){
+      classes.push('red');
+    }
+    if(this.state.persons.length <= 1){
+      classes.push('bold');
     }
 
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
-        <p>This is really working!</p>
+        <p className={classes.join(' ')}>This is really working!</p>
         <button
           style={style}
           onClick={this.togglePersonsHandler}>Toggle Persons</button>
