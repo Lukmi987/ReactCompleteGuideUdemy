@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import Radium from 'radium';
 
 class App extends Component {
   state = {
@@ -50,7 +51,12 @@ class App extends Component {
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      //coz we use radium
+      ':hover': {
+          backgroundColor: 'lightgreen',
+          color: 'black'
+      }
     };
 
     let persons = null;
@@ -71,6 +77,11 @@ class App extends Component {
 
       //Everything is JavaScript we change style dinamically , we can manipulate any javascript object
       style.backgroundColor = 'red';
+      //coz it's a string we use squere brackets
+      style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+      }
     }
 
     //turn array of strings into one string, generic solution to manipulate dinamically
@@ -97,4 +108,5 @@ class App extends Component {
   }
 }
 
-export default App;
+//injecting some extra functionality
+export default Radium(App);
