@@ -6,3 +6,7 @@ How to use the downloaded files
 We use packages radium for inline styling to use pseudo elements and media queries ...
 
 - styled components library npm install --save styled-components
+
+
+Css modules
+npm run eject
