@@ -4,8 +4,10 @@ import Person from './Person/Person';
 import styled from 'styled-components';
 // import Radium, {StyleRoot} from 'radium';
 
+
+// we pass the props to button func
 const StyledButton = styled.button`
-background-color: green;
+background-color: ${props => props.alt ? 'salmon' : 'green'};
 font: inherit;
 border: 1px solid blue;
 padding: 8px;
@@ -114,7 +116,7 @@ class App extends Component {
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p className={classes.join(' ')}>This is really working!</p>
-        <StyledButton
+        <StyledButton alt ={this.state.showPersons}
           onClick={this.togglePersonsHandler}>Toggle Persons
         </StyledButton>
         {persons}
