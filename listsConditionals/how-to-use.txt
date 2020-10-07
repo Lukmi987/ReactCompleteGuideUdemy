@@ -10,3 +10,6 @@ We use packages radium for inline styling to use pseudo elements and media queri
 
 Css modules
 npm run eject
+
+============
+Cool extension to chrome React developer tools
