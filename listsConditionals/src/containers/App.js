@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Person from './Person/Person';
+import Person from '..components/Persons/Person/Person';
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
@@ -46,44 +46,23 @@ class App extends Component {
   }
 
   render () {
-    const style = {
-      backgroundColor: 'green',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-      //coz we use radium
-      ':hover': {
-          backgroundColor: 'lightgreen',
-          color: 'black'
-      }
-    };
 
     let persons = null;
 
     if ( this.state.showPersons ) {
+      //rendering list of persons
       persons = (
         <div>
           {this.state.persons.map((person, index) => {
-            // /Now with that person wrapped with error boundary, we also have to move the key here to the error boundary because this is now the outer element which we map and the key always has to be on the outer element
-            //in a map method because that's the element we actually replicate.
-            return <ErrorBoundary key={person.id}>
-              <Person
+            return <Person
               click={() => this.deletePersonHandler(index)}
               name={person.name}
               age={person.age}
-              changed={(event) => this.nameChangedHandler(event, person.id)} /></ErrorBoundary>
+              key={person.id}
+              changed={(event) => this.nameChangedHandler(event, person.id)} />
           })}
         </div>
       );
-
-      //Everything is JavaScript we change style dinamically , we can manipulate any javascript object
-      style.backgroundColor = 'red';
-      //coz it's a string we use squere brackets
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      }
     }
 
     //turn array of strings into one string, generic solution to manipulate dinamically
