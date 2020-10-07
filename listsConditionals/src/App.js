@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
   state = {
@@ -64,12 +65,14 @@ class App extends Component {
       persons = (
         <div>
           {this.state.persons.map((person, index) => {
-            return <Person
+            // /Now with that person wrapped with error boundary, we also have to move the key here to the error boundary because this is now the outer element which we map and the key always has to be on the outer element
+            //in a map method because that's the element we actually replicate.
+            return <ErrorBoundary key={person.id}>
+              <Person
               click={() => this.deletePersonHandler(index)}
               name={person.name}
               age={person.age}
-              key={person.id}
-              changed={(event) => this.nameChangedHandler(event, person.id)} />
+              changed={(event) => this.nameChangedHandler(event, person.id)} /></ErrorBoundary>
           })}
         </div>
       );
