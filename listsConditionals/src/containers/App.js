@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
 import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit'
 
 
 class App extends Component {
+
+  constructor(props){
+    // it will execute the constructor of the component you're extending
+    super(props);
+    console.log('[App.js] constructor');
+  }
   state = {
     persons: [
       { id: 'asfa1', name: 'Max', age: 28 },
@@ -12,6 +19,15 @@ class App extends Component {
     ],
     otherState: 'some other value',
     showPersons: false
+  }
+
+  static getDerivedStateFromProps(props,state){
+    console.log('[App.js] getDerivedStateFromProps', props);
+    return state;
+  }
+
+  componentDidMount() {
+    console.log('[App.js] componentDidMount');
   }
 
   nameChangedHandler = ( event, id ) => {
@@ -46,41 +62,25 @@ class App extends Component {
   }
 
   render () {
-
+    console.log('[App.js] render');
     let persons = null;
 
     if ( this.state.showPersons ) {
-      //rendering list of persons
-      persons = (
-        <div>
-          <Persons
-            persons = {this.state.persons}
-            clicked = {this.deletePersonHandler}
-            changed = {this.nameChangedHandler}
-          />
-        </div>
-      );
+      persons =  <Persons
+                    persons = {this.state.persons}
+                    clicked = {this.deletePersonHandler}
+                    changed = {this.nameChangedHandler}
+                />;
     }
 
-    //turn array of strings into one string, generic solution to manipulate dinamically
-    const classes = [];
 
-    if (this.state.persons.length <= 2){
-      classes.push('red');
-    }
-    if(this.state.persons.length <= 1){
-      classes.push('bold');
-    }
 
     return (
       // to use radium media queries we have to wrap the whole application with StyleRoot Component provided by Radium
 
       <div className="App">
-        <h1>Hi, I'm a React App</h1>
-        <p className={classes.join(' ')}>This is really working!</p>
-        <button
-          onClick={this.togglePersonsHandler}>Toggle Persons
-        </button>
+        <Cockpit persons={this.state.persons}
+                  toggle = {this.togglePersonsHandler}/>
         {persons}
       </div>
 
