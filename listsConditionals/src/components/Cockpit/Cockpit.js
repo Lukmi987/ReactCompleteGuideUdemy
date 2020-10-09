@@ -3,10 +3,23 @@ import React, {useEffect} from 'react';
 //turn array of strings into one string, generic solution to manipulate dinamically
 const classes = [];
 
-//useEffect is the second most important React hook you can use next to useState because useEffect and now that sounds strange but useEffect basically combines the functionality or the use cases you can cover
+//useEffect is the second most important React hook you can use next to useState because useEffect  basically combines the functionality or the use cases you can cover
 // of all these class-based lifecycle hooks in one React hook here and both is called hook,
 
+//This is not a lifecycle hook, this is a React hook so basically a function you can add into one of your functional components.
 const cockpit = (props) => {
+  //as a default takes a func(without args) that will run for every render cycle
+  useEffect(() => {
+      console.log('Cockpit.js useEffect');
+      //Http request
+      //also runs when the component is created
+
+      setTimeout(()=>{
+        alert('Saved data to cloud!');
+      },1000);
+      // so now useEffect only execute when our persons component has changed }, [props.persons]);
+      //when we pass an empty array it runs for a first time but never again
+  }, []);
 
   if (props.persons.length <= 2){
     classes.push('red');
