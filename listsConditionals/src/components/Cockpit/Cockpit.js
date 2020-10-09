@@ -14,12 +14,25 @@ const cockpit = (props) => {
       //Http request
       //also runs when the component is created
 
-      setTimeout(()=>{
+  const timer = setTimeout(()=>{
         alert('Saved data to cloud!');
       },1000);
       // so now useEffect only execute when our persons component has changed }, [props.persons]);
       //when we pass an empty array it runs for a first time but never again
+
+      //for clean up we can use return ()
+      return () => {
+        console.log('[Cockpit.js] cleanup work in useEffect');
+      }
   }, []);
+
+  // no second argument it will run for every render cycle
+  useEffect(()=>{
+    return () => {
+      console.log('Cockpit.js 2nd useEffect');
+      console.log('[Cockpit.js] cleanup work in 2nd useEffect');
+    }
+  });
 
   if (props.persons.length <= 2){
     classes.push('red');

@@ -18,7 +18,8 @@ class App extends Component {
       { id: 'asdf11', name: 'Stephanie', age: 26 }
     ],
     otherState: 'some other value',
-    showPersons: false
+    showPersons: false,
+    showCockpit: true
   }
 
   static getDerivedStateFromProps(props,state){
@@ -89,8 +90,11 @@ class App extends Component {
       // to use radium media queries we have to wrap the whole application with StyleRoot Component provided by Radium
 
       <div className="App">
-        <Cockpit persons={this.state.persons}
-                  toggle = {this.togglePersonsHandler}/>
+        <button onClick={() => {this.setState({showCockpit: false})}}>Remove cockpit</button>
+      {this.state.showCockpit ? (<Cockpit persons={this.state.persons}
+                  toggle = {this.togglePersonsHandler}
+                  />
+              ) :null }
         {persons}
       </div>
 
