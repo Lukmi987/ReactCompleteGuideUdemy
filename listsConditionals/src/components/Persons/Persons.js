@@ -3,10 +3,10 @@ import React, {Component} from 'react';
 import Person from './Person/Person';
 //we do not have jsx we can ommit => ()
 class Persons extends Component {
-  static getDerivedStateFromProps(props,state){
-      console.log('[Persons.js] getDerivedStateFromProps');
-      return state;
-  }
+  // static getDerivedStateFromProps(props,state){
+  //     console.log('[Persons.js] getDerivedStateFromProps');
+  //     return state;
+  // }
 
   shouldComponentUpdate(nextProps, nextState){
     //we have to return true or false if  react should continue
@@ -15,12 +15,15 @@ class Persons extends Component {
   }
 
   getSnapshotBeforeUpdate(prevProps, prevState){
+    // snapshot is a data package which we then recieve in componentDidUpdate, to save some state before the update such as scroll position
     console.log('[Persons.js] getSnapshotBeforeUpdate');
+    return {message: 'Snapshot'};
   }
 
   // run when we are done with all the updating
-  componentDidMount() {
+  componentDidUpdate(prevProps, prevState, snapshot) {
     console.log('[Persons.js] componentDidMount');
+    console.log(snapshot);
   }
 
   render(){
