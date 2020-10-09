@@ -8,6 +8,8 @@ class Persons extends Component {
   //     return state;
   // }
 
+
+/// !! When we update in input field updating process start here coz we pass here the updated state a lifecycle begin
   shouldComponentUpdate(nextProps, nextState){
     //we have to return true or false if  react should continue
     console.log('[Persons.js] shouldComponentUpdate');
@@ -20,7 +22,7 @@ class Persons extends Component {
     return {message: 'Snapshot'};
   }
 
-  // run when we are done with all the updating
+  // run when we are done with all the updating, when we need to fetch a new data from the server
   componentDidUpdate(prevProps, prevState, snapshot) {
     console.log('[Persons.js] componentDidMount');
     console.log(snapshot);
