@@ -22,6 +22,7 @@ const cockpit = (props) => {
 
       //for clean up we can use return ()
       return () => {
+        clearTimeout(timer);
         console.log('[Cockpit.js] cleanup work in useEffect');
       }
   }, []);
