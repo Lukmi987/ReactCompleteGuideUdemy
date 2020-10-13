@@ -53,5 +53,6 @@ const cockpit = (props) => {
   );
 };
 
-//React memo good for optimalization , to wrap functio compon that might not need to update with every change in the parent component with it
+//React memo good for optimalization , to wrap functio compon that might not need to update with every change in the parent component with it,
+// !!! but if children always needs to update it is unneccesare code to run
 export default React.memo(cockpit);
