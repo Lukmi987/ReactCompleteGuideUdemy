@@ -14,7 +14,7 @@ const cockpit = (props) => {
       //Http request
       //also runs when the component is created
 
-  const timer = setTimeout(()=>{
+      setTimeout(()=>{
         alert('Saved data to cloud!');
       },1000);
       // so now useEffect only execute when our persons component has changed }, [props.persons]);
@@ -22,7 +22,7 @@ const cockpit = (props) => {
 
       //for clean up we can use return ()
       return () => {
-        clearTimeout(timer);
+        // clearTimeout(timer);
         console.log('[Cockpit.js] cleanup work in useEffect');
       }
   }, []);

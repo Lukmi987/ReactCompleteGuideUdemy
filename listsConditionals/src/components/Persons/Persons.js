@@ -14,13 +14,12 @@ class Persons extends Component {
     //we have to return true or false if  react should continue
     console.log('[Persons.js] shouldComponentUpdate');
     //what it compares are pointers actually , that's why we should defined changes dynamically creating copies, coz objects and arrays are referenced type in JS
-    if (nextProps.perons !== this.props.persons){
+    if (nextProps.persons !== this.props.persons){
       return true;
-      else{
+    }else{
         return false;
       }
-    }
-    return true;
+
   }
 
   getSnapshotBeforeUpdate(prevProps, prevState){
