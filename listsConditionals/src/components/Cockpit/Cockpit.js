@@ -35,10 +35,11 @@ const cockpit = (props) => {
     }
   });
 
-  if (props.persons.length <= 2){
+  // now we get the data that will not change with every keystroke
+  if (props.personsLength <= 2){
     classes.push('red');
   }
-  if(props.persons.length <= 1){
+  if(props.personsLength <= 1){
     classes.push('bold');
   }
   return (
@@ -52,4 +53,5 @@ const cockpit = (props) => {
   );
 };
 
-export default cockpit;
+//React memo good for optimalization , to wrap functio compon that might not need to update with every change in the parent component with it
+export default React.memo(cockpit);
