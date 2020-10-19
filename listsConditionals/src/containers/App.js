@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit'
+import WithClass from '../hoc/WithClass'
 
 
 class App extends Component {
@@ -85,7 +86,7 @@ class App extends Component {
     return (
       // to use radium media queries we have to wrap the whole application with StyleRoot Component provided by Radium
 
-      <div className="App">
+      <WithClass classes="App">
         <button onClick={() => {this.setState({showCockpit: false})}}>Remove cockpit</button>
       {this.state.showCockpit ?
               (<Cockpit personsLength={this.state.persons.length}
@@ -93,7 +94,7 @@ class App extends Component {
                   />
               ) :null }
         {persons}
-      </div>
+      </WithClass>
 
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
