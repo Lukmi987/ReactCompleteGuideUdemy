@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
+import withClass from '../../../hoc/withClass'
 import Aux from '../../../hoc/Aux';
 
 import './Person.css';

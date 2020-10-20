@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Persons from '../components/Persons/Persons';
-import Cockpit from '../components/Cockpit/Cockpit'
-import WithClass from '../hoc/WithClass'
+import Cockpit from '../components/Cockpit/Cockpit';
+import withClass from '../hoc/withClass';
+import Aux from '../hoc/Aux'
 
 
 class App extends Component {
@@ -20,7 +21,8 @@ class App extends Component {
     ],
     otherState: 'some other value',
     showPersons: false,
-    showCockpit: true
+    showCockpit: true,
+    changeCounter: 0
   }
 
   static getDerivedStateFromProps(props,state){
@@ -51,11 +53,20 @@ class App extends Component {
       ...this.state.persons[personIndex]
     };
     // const person = Object.assign({}, this.state.persons[personIndex]);
+
+    //We call state synchronously here but it's not guaranteed to execute and finish immediately
+    // the changeCounter is not guaranteed to be the latest state ,It could be older state
+    //So better use prevState
     person.name = event.target.value;
     const persons = [...this.state.persons];
     persons[personIndex] = person;
-    this.setState( {persons: persons} );
-  }
+    this.setState((prevState,props) =>  {
+    return {
+      persons: persons,
+      changeCounter: prevState.changeCounter + 1
+    };
+    });
+  };
 
   deletePersonHandler = (personIndex) => {
     // const persons = this.state.persons.slice();
@@ -82,11 +93,12 @@ class App extends Component {
     }
 
 
-
     return (
       // to use radium media queries we have to wrap the whole application with StyleRoot Component provided by Radium
 
-      <WithClass classes="App">
+      // <WithClass classes="App">
+      <Aux>
+        <p>{this.state.changeCounter}</p>
         <button onClick={() => {this.setState({showCockpit: false})}}>Remove cockpit</button>
       {this.state.showCockpit ?
               (<Cockpit personsLength={this.state.persons.length}
@@ -94,12 +106,13 @@ class App extends Component {
                   />
               ) :null }
         {persons}
-      </WithClass>
+      </Aux>
+
 
     );
-    // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
+
   }
 }
 
 //injecting some extra functionality
-export default App;
+export default withClass(App, classes.App);
