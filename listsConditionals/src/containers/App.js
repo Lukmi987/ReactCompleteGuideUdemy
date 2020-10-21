@@ -3,7 +3,8 @@ import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 import withClass from '../hoc/withClass';
-import Aux from '../hoc/Aux'
+import Aux from '../hoc/Aux';
+import AuthContext from '../context/auth-context';
 
 
 class App extends Component {
@@ -106,12 +107,23 @@ class App extends Component {
       <Aux>
         <p>{this.state.changeCounter}</p>
         <button onClick={() => {this.setState({showCockpit: false})}}>Remove cockpit</button>
+
+
+      {/* double {{}} to enter JS object and outside one to enter dynamic content, inner curly braces
+        React will re-render when state or props change. So only changing something in a context object would not cause rerender cycle,
+        that's why I store the current state in authenticated prop of the object I am passing as a value to the authContext
+
+        value is a prop of AuthContext.Provider
+      */}
+        <AuthContext.Provider value={{authenticated: this.state.authenticated,
+                                      login: this.loginHandler}}> {/* just stores a reference to this login handler func*/}
       {this.state.showCockpit ?
               (<Cockpit personsLength={this.state.persons.length}
                   toggle = {this.togglePersonsHandler}
                   login={this.loginHandler}
                   />
               ) :null }
+        </AuthContext.Provider>
         {persons}
       </Aux>
 
