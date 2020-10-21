@@ -22,6 +22,7 @@ import './Person.css';
   console.log('[Person.js] rendering ...');
      return (
           <Aux>
+            {this.props.isAuth ? <p>authenticated !!!</p> : <p>Pleadse log in</p>}
              <p key="i1" onClick={this.props.clicked}>I'm {this.props.name} and I am {this.props.age} years old!</p>
              <p> {this.props.children}</p>
              <input key="i3"
