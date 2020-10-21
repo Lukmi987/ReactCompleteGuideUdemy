@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 
 //turn array of strings into one string, generic solution to manipulate dinamically
 const classes = [];
@@ -8,15 +8,23 @@ const classes = [];
 
 //This is not a lifecycle hook, this is a React hook so basically a function you can add into one of your functional components.
 const cockpit = (props) => {
-  //as a default takes a func(without args) that will run for every render cycle
+
+  //set up our reference
+  const toggleBtnRef = useRef(null);
+
+  //as a default takes a func(without args) that will run after every render cycle
   useEffect(() => {
       console.log('Cockpit.js useEffect');
       //Http request
       //also runs when the component is created
 
-      setTimeout(()=>{
-        alert('Saved data to cloud!');
-      },1000);
+      // setTimeout(()=>{
+      //   alert('Saved data to cloud!');
+      // },1000);
+
+
+      toggleBtnRef.current.click();
+
       // so now useEffect only execute when our persons component has changed }, [props.persons]);
       //when we pass an empty array it runs for a first time but never again
 
@@ -47,6 +55,7 @@ const cockpit = (props) => {
         <h1>Hi, I'm a React App</h1>
         <p className={classes.join(' ')}>This is really working!</p>
         <button
+          ref={toggleBtnRef}
           onClick={props.toggle}>Toggle Persons
         </button>
     </div>
