@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import withClass from '../../../hoc/withClass';
 import Aux from '../../../hoc/Aux';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import AuthContext from '../../../context/auth-context';
 
 import './Person.css';
 
@@ -22,7 +23,10 @@ import './Person.css';
   console.log('[Person.js] rendering ...');
      return (
           <Aux>
-            {this.props.isAuth ? <p>authenticated !!!</p> : <p>Pleadse log in</p>}
+              <AuthContext.Consumer>
+                {(context) =>
+                 context.authenticated ? <p>authenticated !!!</p> : <p>Pleadse log in</p>}
+              </AuthContext.Consumer>
              <p key="i1" onClick={this.props.clicked}>I'm {this.props.name} and I am {this.props.age} years old!</p>
              <p> {this.props.children}</p>
              <input key="i3"

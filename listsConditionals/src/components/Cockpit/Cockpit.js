@@ -1,5 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 
+import AuthContext from '../../context/auth-context'
 //turn array of strings into one string, generic solution to manipulate dinamically
 const classes = [];
 
@@ -58,8 +59,12 @@ const cockpit = (props) => {
           ref={toggleBtnRef}
           onClick={props.toggle}>Toggle Persons
         </button>
-        <button onClick={props.login}>Log in
-        </button>
+        {/* we wrap the func where we get the context arg and that func return jsx code*/}
+        <AuthContext.Consumer>
+          {/* log in property holds a ref to the log in func */}
+          {context => <button onClick={context.login}>Log in
+        </button>}
+      </AuthContext.Consumer>
     </div>
   );
 };

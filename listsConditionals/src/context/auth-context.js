@@ -1,5 +1,7 @@
 import React from 'react';
 
+{/* the good way how to pass directly props from A to B and to using unneccesary compononents */}
+
 //context is globally available js object,array,string,number ..(we decide where is it available),
 // without using props, behind the scenes
 const authContext = React.createContext({

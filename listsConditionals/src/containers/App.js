@@ -120,7 +120,7 @@ class App extends Component {
       {this.state.showCockpit ?
               (<Cockpit personsLength={this.state.persons.length}
                   toggle = {this.togglePersonsHandler}
-                  login={this.loginHandler}
+      
                   />
               ) :null }
         </AuthContext.Provider>
