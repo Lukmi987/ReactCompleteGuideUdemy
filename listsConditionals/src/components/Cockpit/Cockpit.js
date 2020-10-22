@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef,useContext} from 'react';
 
 import AuthContext from '../../context/auth-context'
 //turn array of strings into one string, generic solution to manipulate dinamically
@@ -12,6 +12,7 @@ const cockpit = (props) => {
 
   //set up our reference
   const toggleBtnRef = useRef(null);
+  const authContext = useContext(AuthContext);
 
   //as a default takes a func(without args) that will run after every render cycle
   useEffect(() => {
@@ -60,11 +61,11 @@ const cockpit = (props) => {
           onClick={props.toggle}>Toggle Persons
         </button>
         {/* we wrap the func where we get the context arg and that func return jsx code*/}
-        <AuthContext.Consumer>
+
           {/* log in property holds a ref to the log in func */}
-          {context => <button onClick={context.login}>Log in
-        </button>}
-      </AuthContext.Consumer>
+          <button onClick={authContext.login}>Log in
+        </button>
+
     </div>
   );
 };
