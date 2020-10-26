@@ -10,7 +10,7 @@ const burger = (props) => {
           return [...Array(props.ingredients[igKey])].map((_, i)=>{
             return  <BurgerIngredient key={igKey + i} type={igKey} />
           });
-        }) // flat() alternative
+        })   //flat() alternative
         .reduce((acc,currVal) => {
           console.log(acc.concat(currVal));
           return acc.concat(currVal)
