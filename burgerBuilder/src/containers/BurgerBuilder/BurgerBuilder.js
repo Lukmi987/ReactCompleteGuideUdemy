@@ -23,7 +23,8 @@ class BurgerBuilder extends Component {
       meat: 0
     },
     totalPrice: 4,
-    purchasble: false
+    purchasble: false,
+    purchasing: false
   };
 
   updatePurchaseState(ingredients){
@@ -72,6 +73,12 @@ class BurgerBuilder extends Component {
       }
     }
 
+    purchaseHandler = () =>{
+      /* if method defined like(purchaseHandler ()) then  syntax below will not work correctly if the method is triggred trough event, due to the
+      way 'this' work in  JS it will not refer to the class,  !! compare to the removeIgredient(set up method as properties where we assigned arrow functions)*/
+      this.setState({purchasing: true});
+    }
+
     render (){
         //creating a copy in an immuteable way , result {salad: true, meat: false}
       const disabledInfo = {
@@ -83,7 +90,7 @@ class BurgerBuilder extends Component {
 
       return (
           <Aux>
-            <Modal>
+            <Modal show={this.state.purchasing}>
                 <OrderSummary ingredients={this.state.ingredients}/>
             </Modal>
             <Burger ingredients={this.state.ingredients} />
@@ -93,6 +100,7 @@ class BurgerBuilder extends Component {
               disableLess = {disabledInfo}
               purchasble={this.state.purchasble}
               price = {this.state.totalPrice}
+              ordered = {this.purchaseHandler}
               />
 
           </Aux>
