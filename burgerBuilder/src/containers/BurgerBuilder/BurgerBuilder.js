@@ -15,13 +15,29 @@ const INGREDIENT_PRICES = {
 class BurgerBuilder extends Component {
   state = {
     ingredients: {
-      salad: 1,
-      bacon: 1,
-      cheese: 2,
-      meat: 1
+      salad: 0,
+      bacon: 0,
+      cheese: 0,
+      meat: 0
     },
-    totalPrice: 4
+    totalPrice: 4,
+    purchasble: false
   };
+
+  updatePurchaseState(ingredients){
+
+console.log(Object.keys(ingredients).map(key => {
+  return 1
+}));
+    const sum = Object.keys(ingredients)
+        .map(igKey => {
+          return ingredients[igKey]; // I return array of values
+        }) // now we turn it to signle number, sum
+        .reduce((accum,el) => {
+          return accum + el;
+        },0);
+        this.setState({purchasble:sum > 0 });
+  }
 
    addIngredient = (type) => {
       const oldCount = this.state.ingredients[type];
@@ -36,6 +52,8 @@ class BurgerBuilder extends Component {
       const oldTotalPrice = this.state.totalPrice;
       const newPrice = oldTotalPrice + priceAddition;
       this.setState({totalPrice: newPrice, ingredients: updatedIngredients});
+      //due to setState working we might get updated state , so we pass new one
+      this.updatePurchaseState(updatedIngredients);
     }
 
     removeIngredient = (type) => {
@@ -52,6 +70,7 @@ class BurgerBuilder extends Component {
         const oldTotalPrice = this.state.totalPrice;
         const newPrice = oldTotalPrice - priceDeduction;
         this.setState({totalPrice: newPrice, ingredients: updatedIngredients});
+        this.updatePurchaseState(updatedIngredients);
       }
     }
 
@@ -71,9 +90,10 @@ class BurgerBuilder extends Component {
               ingredientAdded = {this.addIngredient}
               ingredientRemoved={this.removeIngredient}
               disableLess = {disabledInfo}
+              purchasble={this.state.purchasble}
               price = {this.state.totalPrice}
               />
-            {console.log(this.addIngredient)}
+
           </Aux>
       );
     }
