@@ -12,7 +12,6 @@ const burger = (props) => {
           });
         })   //flat() alternative
         .reduce((acc,currVal) => {
-          console.log(acc.concat(currVal));
           return acc.concat(currVal)
         }, []);
 
