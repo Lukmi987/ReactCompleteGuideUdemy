@@ -14,14 +14,18 @@ const Ingredients = () => {
        // ...ingredient takes all key /value pairs of the object and adds them as key/value as a new object
        {id: Math.random().toString(), ...ingredient}]);
   }
-  console.log(userIngredients);
+
+  const removeIngredientItem = ingredientId =>{
+    setUserIngredients(prevIngredients => prevIngredients.filter((ingredient)=> ingredient.id !== ingredientId));
+  }
+
   return (
     <div className="App">
       <IngredientForm onAddIngredient={addIngredientHandler} />
 
       <section>
         <Search />
-        <IngredientList ingredients={userIngredients} onRemoveItem={() => {}} />
+        <IngredientList ingredients={userIngredients} onRemoveItem={removeIngredientItem} />
         {/* Need to add list here! */}
       </section>
     </div>
