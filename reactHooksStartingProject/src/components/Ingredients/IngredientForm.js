@@ -6,6 +6,7 @@ import './IngredientForm.css';
 const IngredientForm = React.memo(props => {
   //alway return an array with 2 elements, first the snapshot of current state and second we use to set a state
   //array destructuring
+  //use state only can be used on a root level , not in the function and if conditions
   const [enteredTitle, setEnteredTitle] = useState('');
   const [enteredAmount, setEnteredAmount] = useState('');
 
@@ -14,6 +15,11 @@ const IngredientForm = React.memo(props => {
     // ...
   };
 
+  const handleInputChange = (e) => {
+    setEnteredTitle(e.target.value);
+  }
+
+
   return (
     <section className="ingredient-form">
       <Card>
@@ -21,9 +27,7 @@ const IngredientForm = React.memo(props => {
           <div className="form-control">
             <label htmlFor="title">Name</label>
             <input type="text" id="title" value={enteredTitle}
-              onChange={event => {
-              setEnteredTitle(event.target.value);
-            }}
+              onChange={handleInputChange}
                />
           </div>
           <div className="form-control">
