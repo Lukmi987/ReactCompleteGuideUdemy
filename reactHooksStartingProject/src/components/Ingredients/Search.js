@@ -4,11 +4,14 @@ import Card from '../UI/Card';
 import './Search.css';
 
 const Search = React.memo(props => {
+
   const {onLoadIngredients} = props;
+  console.log(onLoadIngredients);
   const [enteredFilter,setEnteredFilter] = useState('');
 
   useEffect(() =>{
-    const query = enteredFilter.length === 0 ? '' : `?orderBy="title"&equalTo="${enteredFilter}"`;
+    const query = enteredFilter.length === 0 ? '' : `?orderBy="ingredient/title"&equalTo="${enteredFilter}"`;
+    console.log(query);
     fetch('https://react-hooks-update-4307d.firebaseio.com/ingredients.json' + query)
       .then(response => response.json())
       .then(responseData => {
@@ -20,7 +23,8 @@ const Search = React.memo(props => {
             amount: responseData[key].amount
           });
         }
-        //onLoadIngredients(loadedIngredients);
+        console.log(loadedIngredients);
+        onLoadIngredients(loadedIngredients);
       });
   },[enteredFilter,onLoadIngredients]);
 
@@ -30,7 +34,8 @@ const Search = React.memo(props => {
         <div className="search-input">
           <label>Filter by Title</label>
           <input type="text"
-            value=""
+            value={enteredFilter}
+            onChange={event => setEnteredFilter(event.target.value)}
 
             />
         </div>
