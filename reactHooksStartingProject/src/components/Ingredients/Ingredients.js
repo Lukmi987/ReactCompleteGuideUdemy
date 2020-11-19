@@ -8,11 +8,18 @@ const Ingredients = () => {
   const [userIngredients, setUserIngredients] = useState([]);
 
   const addIngredientHandler = ingredient => {
-    //taking all elements of the old array and make a new array with new element
-    setUserIngredients(prevIngredients => [
-       ...prevIngredients,
-       // ...ingredient takes all key /value pairs of the object and adds them as key/value as a new object
-       {id: Math.random().toString(), ...ingredient}]);
+    fetch('https://react-hooks-update-4307d.firebaseio.com/ingredients.json',{
+      method: 'POST',
+      body: JSON.stringify(ingredient),
+      headers: {'Content_type': 'application/json'}
+    }).then(response => {
+      return response.json();
+    }).then(responseData => {
+      setUserIngredients(prevIngredients => [
+         ...prevIngredients,
+         {id: responseData.name, ...ingredient}
+       ]);
+    })
   }
 
   const removeIngredientItem = ingredientId =>{
