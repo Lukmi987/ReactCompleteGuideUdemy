@@ -10,7 +10,7 @@ const ingredientReducer = (currentIngredients, action) => {
   switch (action.type) {
     case 'SET':
     console.log('v set', action.ingredient);
-     return action.ingredient;
+     return action.ingredients;
     case 'ADD':
       return [...currentIngredients, action.ingredient];
     case 'DELETE':
@@ -63,6 +63,7 @@ console.log('my my',userIngredients);
 
       <section>
         <Search dispatch={dispatch}/>
+
         <IngredientList userIngredients={userIngredients} onRemoveItem={removeIngredientItem} />
         {/* Need to add list here! */}
       </section>

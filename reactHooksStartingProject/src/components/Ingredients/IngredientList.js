@@ -4,7 +4,7 @@ import './IngredientList.css';
 
 const IngredientList = ({ userIngredients, onRemoveItem }) => {
   // const {ingredients, onRemoveItem } = props;
-  console.log('v search',userIngredients);
+  console.log('v search', userIngredients.ingredients);
   return (
     <section className="ingredient-list">
       <h2>Loaded Ingredients</h2>

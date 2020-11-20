@@ -23,7 +23,8 @@ const Search = React.memo(props => {
             if(responseData) {
               const entries = Object.entries(responseData);
               const ingredients = entries.reduce(loadIngredients, []);
-              dispatch({type:'SET', ingredient: {ingredients}});
+              dispatch({type:'SET', ingredients: ingredients});
+              // dispatch({ type: 'SET', ingredients: filteredIngredients });
           }
         });
       }
