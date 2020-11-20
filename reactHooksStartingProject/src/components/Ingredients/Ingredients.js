@@ -6,16 +6,6 @@ import Search from './Search';
 
 const Ingredients = () => {
   const [userIngredients, setUserIngredients] = useState([]);
-  //gets executed right after every component render cycle
-  // useEffect(()=>{
-  //   fetch('https://react-hooks-update-4307d.firebaseio.com/ingredients.json')
-  //     .then(response => response.json())
-  //     .then(responseData => {
-  //       const entries = Object.entries(responseData);
-  //       const loadedIngredients = entries.reduce(loadIngredients,[]);
-  //       setUserIngredients(loadedIngredients);
-  //     });
-  // },[]);
 
   //only runs when userIngredients updates
   useEffect(()=>{
