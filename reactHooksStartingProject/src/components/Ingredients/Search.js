@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import {loadIngredients} from '../../helpers/ingredientHelp';
 
 import Card from '../UI/Card';
 import './Search.css';
@@ -13,29 +14,21 @@ const Search = React.memo(props => {
       //enteredFilter will be the old value 500ml ago, when we set the timer
       if(enteredFilter === inputRef.current.value) {
         const query =
-          enteredFilter.length === 0
-            ? ''
-            : `?orderBy="title"&equalTo="${enteredFilter}"`;
-          console.log(query);
+          enteredFilter.length
+            ? `?orderBy="title"&equalTo="${enteredFilter}"`
+            : '';
         fetch('https://react-hooks-update-4307d.firebaseio.com/ingredients.json' + query)
           .then(response => response.json())
           .then(responseData => {
-            const entries = Object.entries(responseData);
-            const ingredients = entries.reduce((result,entry) => {
-              const composedEntry = {
-                id:entry[0],
-                title: entry[1].title,
-                amount: entry[1].amount
-              };
-              result.push(composedEntry);
-              return result;
-            },[]);
-            onLoadIngredients(ingredients);
-          });
+            if(responseData) {
+              const entries = Object.entries(responseData);
+              const ingredients = entries.reduce(loadIngredients, []);
+              onLoadIngredients(ingredients);
+          }
+        });
       }
-
     },500);
-      //clean up old timer
+      //clean up old timer, unmount
     return () => {
       clearTimeout(timer);
     };
