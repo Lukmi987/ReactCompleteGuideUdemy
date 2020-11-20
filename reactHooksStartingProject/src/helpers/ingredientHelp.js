@@ -9,12 +9,14 @@ export const loadIngredients = (result, entry) => {
   return result;
 }
 
-export const addIngredientHandler = (ingredient,setUserIngredients) => {
-  fetch('https://react-hooks-update-4307d.firebaseio.com/ingredients.json',{
+export const addIngredientHandler = (ingredient,setUserIngredients,setIsLoading) => {
+    setIsLoading(true);
+    fetch('https://react-hooks-update-4307d.firebaseio.com/ingredients.json',{
     method: 'POST',
     body: JSON.stringify(ingredient),
     headers: {'Content_type': 'application/json'}
   }).then(response => {
+    setIsLoading(false);
     return response.json();
   }).then(responseData => {
     setUserIngredients(prevIngredients => [
