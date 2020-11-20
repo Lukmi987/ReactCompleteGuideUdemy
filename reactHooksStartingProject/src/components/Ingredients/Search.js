@@ -5,7 +5,7 @@ import Card from '../UI/Card';
 import './Search.css';
 
 const Search = React.memo(props => {
-  const { onLoadIngredients } = props;
+  const { dispatch } = props;
   const [enteredFilter, setEnteredFilter] = useState('');
   const inputRef = useRef();
 
@@ -23,7 +23,7 @@ const Search = React.memo(props => {
             if(responseData) {
               const entries = Object.entries(responseData);
               const ingredients = entries.reduce(loadIngredients, []);
-              onLoadIngredients(ingredients);
+              dispatch({type:'SET', ingredient: {ingredients}});
           }
         });
       }
@@ -32,7 +32,7 @@ const Search = React.memo(props => {
     return () => {
       clearTimeout(timer);
     };
-  }, [enteredFilter, onLoadIngredients, inputRef]);
+  }, [enteredFilter, inputRef, dispatch]);
 
   return (
     <section className="search">

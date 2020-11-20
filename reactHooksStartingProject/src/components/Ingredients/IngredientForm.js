@@ -5,7 +5,7 @@ import './IngredientForm.css';
 import {addIngredientHandler} from '../../helpers/ingredientHelp';
 import LoadingIndicater from '../UI/LoadingIndicator';
 
-const IngredientForm = React.memo(({setUserIngredients,setIsLoading,isLoading}) => {
+const IngredientForm = React.memo(({setIsLoading,isLoading,dispatch}) => {
   //alway return an array with 2 elements, first the snapshot of current state and second we use to set a state
   //array destructuring
   //use state only can be used on a root level , not in the function and if conditions
@@ -14,7 +14,7 @@ const IngredientForm = React.memo(({setUserIngredients,setIsLoading,isLoading}) 
 
   const submitHandler = event => {
     event.preventDefault();
-    addIngredientHandler({title: enteredTitle, amount: enteredAmount}, setUserIngredients,setIsLoading);
+    addIngredientHandler({title: enteredTitle, amount: enteredAmount}, dispatch,setIsLoading);
     // ...
   };
 
