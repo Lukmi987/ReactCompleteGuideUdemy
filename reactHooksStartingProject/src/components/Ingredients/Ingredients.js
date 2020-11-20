@@ -48,7 +48,10 @@ const Ingredients = () => {
   //     title: entry[1].title,
   //     amount: entry[1].amount
   //   };
-  //   return [...result, composedEntry];
+  //     //  not a good way coz every cycle we create a new array(problem with big data), better push
+  //   //return [...result, composedEntry];
+  //
+  //   //return result.push(composedEntry);
   // }
 
   const removeIngredientItem = ingredientId =>{
