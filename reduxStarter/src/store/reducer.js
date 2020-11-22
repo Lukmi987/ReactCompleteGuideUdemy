@@ -15,12 +15,12 @@ const reducer = (state = initialState, action) => {
   }
   if (action.type === 'ADD'){
     return {
-      counter: state.counter + 3
+      counter: state.counter + action.val
     }
   }
   if (action.type === 'SUBTRUCT'){
     return {
-      counter: state.counter - 2
+      counter: state.counter - action.val
     }
   }
 
