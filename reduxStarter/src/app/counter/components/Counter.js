@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { connect, useSelector, useDispatch } from 'react-redux';
 import CounterControl from '../../_common/components/CounterControl';
 import CounterOutput from '../../_common/components/CounterOutput';
 import { INCREMENT, DECREMENT, ADD, SUBTRACT } from '../../../constants/keys';
 import { changeCounter} from '../actions';
 import useCounter from "./useCounter";
+import CounterForm from "./CounterForm";
 
 const Counter = ({testEffect }) => {
   const {addCounter, counter, decrementCounter, incrementCounter, subtractCounter} = useCounter()
@@ -23,16 +23,18 @@ const Counter = ({testEffect }) => {
               incrementCounter()
           }} />
         <CounterControl label={DECREMENT} clicked={() => {
-              dispatch(changeCounter(DECREMENT))
+              decrementCounter()
           }} />
         <CounterControl label={ADD} clicked={() => {
-              dispatch(changeCounter(ADD))
+              addCounter()
           }} />
         <CounterControl label={SUBTRACT} clicked={() => {
-              dispatch(changeCounter(SUBTRACT))
+              subtractCounter()
           }} />
           <hr />
-
+        <div>
+            <CounterForm />
+        </div>
       </div>
   );
 }

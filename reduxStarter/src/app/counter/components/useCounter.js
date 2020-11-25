@@ -8,10 +8,10 @@ const useCounter = () => {
 
     return {
         counter,
-        incrementCounter: dispatch(changeCounter(INCREMENT)),
-        decrementCounter: dispatch(changeCounter(DECREMENT)),
-        addCounter: dispatch(changeCounter(ADD)),
-        subtractCounter: dispatch(changeCounter(SUBTRACT))
+        incrementCounter: () => dispatch(changeCounter(INCREMENT)),
+        decrementCounter: () =>dispatch(changeCounter(DECREMENT)),
+        addCounter: () =>dispatch(changeCounter(ADD)),
+        subtractCounter: () =>dispatch(changeCounter(SUBTRACT))
     }
 };
 
