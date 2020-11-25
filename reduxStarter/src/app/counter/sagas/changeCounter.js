@@ -1,7 +1,7 @@
 import { put, select } from 'redux-saga/effects';
-import { INCREMENT, DECREMENT, ADD, SUBTRACT } from '../../constants/keys';
-import { SET_COUNTER } from '../../constants/actionTypes';
-import { getCounter } from '../../selectors/counterSelectors';
+import {getCounter} from "../../../selectors/counterSelectors";
+import {ADD, DECREMENT, INCREMENT, SUBTRACT} from "../../../constants/keys";
+import {SET_COUNTER} from "../../../constants/actionTypes";
 
 
 export function* changeCounter(action) {
