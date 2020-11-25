@@ -1,10 +1,18 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import CounterControl from '../../components/CounterControl/CounterControl';
-import CounterOutput from '../../components/CounterOutput/CounterOutput';
-import { INCREMENT, DECREMENT, ADD, SUBTRACT } from '../../constants/keys'
+import CounterControl from '../../_common/components/CounterControl';
+import CounterOutput from '../../_common/components/CounterOutput';
+import { INCREMENT, DECREMENT, ADD, SUBTRACT } from '../../../constants/keys'
 
-const Counter = ({counter, changeCounter}) => {
+const Counter = ({counter, changeCounter, testEffect }) => {
+
+  // const [counter1, setCounter1] = useState(0);
+  // console.log(counter1);
+
+  useEffect(() => {
+    testEffect();
+  },[]);
+
   return (
       <div>
           <CounterOutput value={counter} />

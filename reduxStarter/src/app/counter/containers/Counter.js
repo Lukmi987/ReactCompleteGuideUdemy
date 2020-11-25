@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { changeCounter } from '../actions';
-import { getCounter} from '../../selectors/counterSelectors';
+import { changeCounter, testEffect } from '../actions';
+import { getCounter} from '../../../selectors/counterSelectors';
 import Counter from '../components/Counter';
 
 const mapStateToProps = state => ({
@@ -10,6 +10,7 @@ const mapStateToProps = state => ({
 //my redux actions
 const mapDispatchToProps = {
   changeCounter,
+  testEffect,
 };
  //if we have a container which only needs to dispatch actions but doesn't need the slice of the state we pass null as first arg to connect
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
