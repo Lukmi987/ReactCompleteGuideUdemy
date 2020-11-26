@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
 
 import counter from './app/counter/reducers/counter';
-import counterForm from './app/counter/reducers/counterForm';
+import userForm from './app/users/reducers/userForm';
+import userList from "./app/users/reducers/userList";
 
 //define how the store is going to look like
 const rootReducer = combineReducers({
   counter,
-  counterForm
+  userForm,
+  userList,
 });
 
 export default rootReducer;

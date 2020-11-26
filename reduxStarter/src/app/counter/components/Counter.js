@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import CounterControl from '../../_common/components/CounterControl';
 import CounterOutput from '../../_common/components/CounterOutput';
 import { INCREMENT, DECREMENT, ADD, SUBTRACT } from '../../../constants/keys';
-import { changeCounter} from '../actions';
 import useCounter from "./useCounter";
-import CounterForm from "../containers/CounterForm";
 
 const Counter = ({testEffect }) => {
   const {addCounter, counter, decrementCounter, incrementCounter, subtractCounter} = useCounter()
@@ -32,9 +30,6 @@ const Counter = ({testEffect }) => {
               subtractCounter()
           }} />
           <hr />
-        <div>
-            <CounterForm />
-        </div>
       </div>
   );
 }

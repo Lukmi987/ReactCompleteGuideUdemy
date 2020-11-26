@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
 import { getCounterForm } from '../../../selectors/counterSelectors';
-import {saveCounterForm} from '../actions';
-import CounterForm from "../components/CounterForm";
+import { processUserForm } from '../actions';
+import UserForm from "../components/UserForm";
 
 const mapStateToProps = state => ({
     counterForm: getCounterForm(state)
 });
 
 const mapDispatchToProps = {
-    saveCounterForm,
+    processUserForm,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CounterForm);
+export default connect(mapStateToProps, mapDispatchToProps)(UserForm);
