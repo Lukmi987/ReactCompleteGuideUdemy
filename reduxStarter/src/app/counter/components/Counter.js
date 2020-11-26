@@ -4,7 +4,7 @@ import CounterOutput from '../../_common/components/CounterOutput';
 import { INCREMENT, DECREMENT, ADD, SUBTRACT } from '../../../constants/keys';
 import { changeCounter} from '../actions';
 import useCounter from "./useCounter";
-import CounterForm from "./CounterForm";
+import CounterForm from "../containers/CounterForm";
 
 const Counter = ({testEffect }) => {
   const {addCounter, counter, decrementCounter, incrementCounter, subtractCounter} = useCounter()
