@@ -1,3 +1,4 @@
+
 export const loadUserData = (result, entry) => {
     const composedEntry = {
         id:entry[0],
@@ -7,3 +8,5 @@ export const loadUserData = (result, entry) => {
     result.push(composedEntry);
     return result;
 };
+
+export  const deleteUser = (userId, userList) => userList.filter(user => user.id !== userId);

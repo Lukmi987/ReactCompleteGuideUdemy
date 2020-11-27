@@ -3,7 +3,7 @@ import Table from  'react-bootstrap/Table';
 import Button from  'react-bootstrap/Button';
 
 
-const UserList = ({userList, fetchUserList}) => {
+const UserList = ({userList, fetchUserList,removeUser}) => {
  useEffect(() => {
     fetchUserList();
 }, []);
@@ -22,7 +22,7 @@ const UserList = ({userList, fetchUserList}) => {
                     <td>{user.fname}</td>
                     <td>{user.lname}</td>
                     <td><Button variant='warning'>Edit</Button></td>
-                    <td><Button variant='danger'>Delete</Button></td>
+                    <td><Button onClick={() => { removeUser(user.id)}} variant='danger'>Delete</Button></td>
                 </tr>
                 )
             )}

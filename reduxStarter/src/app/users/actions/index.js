@@ -1,6 +1,6 @@
 import {
   PROCESS_USER_FORM,
-  FETCH_USER_LIST
+  FETCH_USER_LIST, REMOVE_USER
 } from '../../../constants/actionTypes'
 
 export const processUserForm = (formData) => ({
@@ -11,5 +11,11 @@ export const processUserForm = (formData) => ({
 export const fetchUserList = () => ({
   type: FETCH_USER_LIST,
 });
+
+export const removeUser = (userId) => ({
+  type: REMOVE_USER,
+  userId: userId,
+});
+
 
 

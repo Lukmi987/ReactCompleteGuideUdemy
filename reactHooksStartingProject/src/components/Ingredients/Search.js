@@ -9,6 +9,8 @@ const Search = React.memo(props => {
   const [enteredFilter, setEnteredFilter] = useState('');
   const inputRef = useRef();
 
+
+
   useEffect(() => {
     const timer = setTimeout(()=>{
       //enteredFilter will be the old value 500ml ago, when we set the timer
