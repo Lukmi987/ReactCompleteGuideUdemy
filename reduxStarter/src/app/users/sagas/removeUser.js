@@ -8,7 +8,7 @@ export function* removeUser(action) {
     const {userId} = action;
 
     try {
-         const response = yield axios.delete('https://react-hooks-update-4307d.firebaseio.com/ingredients/{userId}.json');
+         const response = yield axios.delete(`https://react-hooks-update-4307d.firebaseio.com/ingredients/${userId}.json`);
          const state =  yield select()
          const updatedUserList= deleteUser(userId,state.userList);
          yield put({type: STORE_USER_LIST, userList: updatedUserList});
