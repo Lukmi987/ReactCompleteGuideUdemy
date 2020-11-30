@@ -6,11 +6,14 @@ import {setUserModalStatus} from "../actions";
 const UserModal = ({ status, setUserModalStatus, selectedUser, editUser }) => {
   const [disabled, setDisabled] = useState("disabled");
   // useState is not rerendr. , calls all except useState
-  const [fname, setfname] = useState(selectedUser ? selectedUser.fname : '');
-  const [lname, setlname] = useState(selectedUser ? selectedUser.lname : '');
+  const [fname, setfname] = useState('');
+  const [lname, setlname] = useState('');
+
   useEffect(()=>{
-      setfname(selectedUser.fname);
-      setlname(selectedUser.lname);
+     if(selectedUser){
+         setfname(selectedUser.fname);
+         setlname(selectedUser.lname);
+     }
   } ,[selectedUser])
 
   const handleChange = (event) => {
@@ -23,17 +26,10 @@ const UserModal = ({ status, setUserModalStatus, selectedUser, editUser }) => {
   }
 
   const handleSubmit = () => {
-      console.log('...................fname',fname);
-      console.log('...................lname',lname);
-
     const userId = selectedUser.id;
       if(selectedUser.fname !== fname || selectedUser.lname !== lname){
-          console.log('...................fname 2',fname);
-          console.log('...................lname 2',lname);
           const editedUser = {id: selectedUser.id, fname, lname};
-          console.log('...................fname 3',fname);
-          console.log('...................lname 3',lname);
-         // editUser(editedUser);
+          editUser(editedUser);
       }
   }
   return (
