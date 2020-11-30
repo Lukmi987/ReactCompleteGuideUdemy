@@ -1,5 +1,5 @@
 import { put } from 'redux-saga/effects';
-import { STORE_USER_FORM } from "../../../constants/actionTypes";
+import {FETCH_USER_LIST, STORE_USER_FORM} from "../../../constants/actionTypes";
 import axios from 'axios';
 
 export function* processUserForm(action) {
@@ -10,6 +10,7 @@ export function* processUserForm(action) {
         const response = yield axios.post('https://react-hooks-update-4307d.firebaseio.com/ingredients.json', preparedData);
         console.log(response);
         yield put({ type: STORE_USER_FORM, counterFormData: preparedData });
+        yield put({type: FETCH_USER_LIST});
     } catch(e){
         console.log(e);
     }

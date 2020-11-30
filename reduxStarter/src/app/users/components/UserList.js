@@ -1,30 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import Table from  'react-bootstrap/Table';
 import Button from  'react-bootstrap/Button';
-import Modal from  'react-bootstrap/Modal';
-//import UserModal from '../../UI/UserModal'
+import UserModal from "../../_common/modals/containers/UserModal";
+import {setUserModalStatus} from "../../_common/modals/actions";
 
-
-const UserList = ({userList, fetchUserList,removeUser,editUser}) => {
+const UserList = ({userList, fetchUserList, removeUser, setUserModalStatus, setSelectedUser}) => {
  useEffect(() => {
     fetchUserList();
 }, []);
-const [show, setShow] = useState(false);
- const [firstName, setFirstName] = useState('');
- //const [secondName, setSecondName] = useState('');
-const handleClose = () => setShow(false);
-const handleShow = () => setShow(true);
+// const [show, setShow] = useState(false);
+//  const [firstName, setFirstName] = useState('');
+//  //const [secondName, setSecondName] = useState('');
 
-const handleChange = (e,name) => {
 
-  setFirstName(e.target.value);
-  //not set immediately
-  console.log(name);
+const handleEditUser = (user) => {
+    setUserModalStatus(true);
+    setSelectedUser(user);
 }
 
 
  return (
-
+     <>
+        <UserModal />
         <Table striped bordered hover>
             <thead>
             <tr>
@@ -38,30 +35,8 @@ const handleChange = (e,name) => {
                     <td>{user.fname}</td>
                     <td>{user.lname}</td>
                     <td>
-                      <Button onClick={()=> handleShow()} variant='warning'>Edit
-
+                      <Button onClick={() => handleEditUser(user) } variant='warning'>Edit
                       </Button>
-                      <Modal
-
-                        show={show}
-                        onHide={handleClose}
-                        backdrop="static"
-                        keyboard={false}
-                      >
-                        <Modal.Header closeButton>
-                            <Modal.Title>Modal title</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                          <input defaultValue={user.fname} onChange={ (e) => {handleChange(e,user.fname)}}/>
-                          <input defaultValue={user.lname} />
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="secondary" onClick={handleClose}>
-                              Close
-                            </Button>
-                            <Button onClick={() => editUser(user.id,user.fname,user.lname)}variant="primary">Confirm</Button>
-                        </Modal.Footer>
-                      </Modal>
                     </td>
                     <td><Button onClick={() => {removeUser(user.id)}} variant='danger'>Delete</Button></td>
                 </tr>
@@ -69,7 +44,12 @@ const handleChange = (e,name) => {
             )}
             </tbody>
         </Table>
+     </>
+
     )
  }
 
 export default UserList;
+
+// rendrovani user Listu pri zmene
+//
