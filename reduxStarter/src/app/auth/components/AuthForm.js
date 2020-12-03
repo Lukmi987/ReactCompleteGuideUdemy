@@ -6,18 +6,16 @@ const AuthForm = ({ processLoginForm }) => {
     const [email, setEmail] = useState('');
     const [pwd, setPwd] = useState('');
     const [validated, setValidated] = useState(false);
-
+    const [isSignup, setIsSignup] = useState(true);
 
     const handleInputChange = (e) =>{
         const id = e.target.id;
         const value = e.target.value;
-
         if(id === 'email') setEmail(value);
         if(id === 'pwd') setPwd(value);
     }
 
     const handleSubmit = (e) => {
-        console.log('..........1');
         e.preventDefault();
         e.stopPropagation();
         const form = e.currentTarget;
@@ -27,16 +25,20 @@ const AuthForm = ({ processLoginForm }) => {
             }
         //form has been validated
         setValidated(true);
-        console.log('..........2');
         processLoginForm(composeFormData());
     }
 
     const composeFormData = () => ({
         email,
         pwd,
+        isSignup,
     });
 
+    const switchAuthModeHandler = () => isSignup ? setIsSignup(false) : setIsSignup(true);
+
+
     return (
+      <>
         <Form
             noValidate
             validated= {validated}
@@ -60,6 +62,11 @@ const AuthForm = ({ processLoginForm }) => {
             </Button>
             <br/>
         </Form>
+        <Button onClick={switchAuthModeHandler}
+                variant='danger'>
+            Switch to {isSignup ? 'SIGNIN' : 'SIGNUP'}
+        </Button>
+        </>
     )
 }
 
