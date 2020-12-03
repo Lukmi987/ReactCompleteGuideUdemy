@@ -6,15 +6,15 @@ import {setUserModalStatus} from "../actions";
 const UserModal = ({ status, setUserModalStatus, selectedUser, editUser }) => {
   const [disabled, setDisabled] = useState("disabled");
   // useState is not rerendr. , calls all except useState
-  const [fname, setfname] = useState('');
-  const [lname, setlname] = useState('');
+  const [fname, setfname] = useState(selectedUser.fname);
+  const [lname, setlname] = useState(selectedUser.lname);
 
-  useEffect(()=>{
-     if(selectedUser){
-         setfname(selectedUser.fname);
-         setlname(selectedUser.lname);
-     }
-  } ,[selectedUser])
+  // useEffect(()=>{
+  //    // if(selectedUser){
+  //    //     setfname(selectedUser.fname);
+  //    //     setlname(selectedUser.lname);
+  //    // }
+  // } ,[selectedUser])
 
   const handleChange = (event) => {
     const id = event.target.id;

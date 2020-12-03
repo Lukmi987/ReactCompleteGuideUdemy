@@ -12,3 +12,8 @@ export const REMOVE_USER = 'REMOVE_USER';
 export const EDIT_USER = 'EDIT_USER';
 export const SET_USER_MODAL_STATUS = 'SET_USER_MODAL_STATUS';
 export const SET_SELECTED_USER = 'SET_SELECTED_USER';
+export const LOGIN_USER = 'LOGIN_USER';
+
+//locations
+export const FETCH_LOCATIONS =  'FETCH_LOCATIONS';
+export const SET_LOCATIONS = 'SET_LOCATIONS';

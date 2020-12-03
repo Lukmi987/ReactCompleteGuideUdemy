@@ -5,6 +5,7 @@ import userForm from './app/users/reducers/userForm';
 import userList from "./app/users/reducers/userList";
 import userModalStatus from "./app/_common/modals/reducers/userModalStatus";
 import selectedUser from "./app/users/reducers/selectedUser";
+import locations from "./app/ybusLocations/reducers/locations";
 
 //define how the store is going to look like
 
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   counter,
   users,
   modals,
+  locations,
 });
 
 export default rootReducer;

@@ -2,26 +2,22 @@ import React, { useEffect, useState } from 'react';
 import Table from  'react-bootstrap/Table';
 import Button from  'react-bootstrap/Button';
 import UserModal from "../../_common/modals/containers/UserModal";
-import {setUserModalStatus} from "../../_common/modals/actions";
 
 const UserList = ({userList, fetchUserList, removeUser, setUserModalStatus, setSelectedUser}) => {
  useEffect(() => {
     fetchUserList();
 }, []);
-// const [show, setShow] = useState(false);
-//  const [firstName, setFirstName] = useState('');
-//  //const [secondName, setSecondName] = useState('');
 
+ const [edited, setEdited] = useState(false);
 
-const handleEditUser = (user) => {
+ const handleEditUser = (user) => {
+    setEdited(true);
     setUserModalStatus(true);
     setSelectedUser(user);
 }
 
-
  return (
      <>
-        <UserModal />
         <Table striped bordered hover>
             <thead>
             <tr>
@@ -44,6 +40,7 @@ const handleEditUser = (user) => {
             )}
             </tbody>
         </Table>
+         { edited && <UserModal /> }
      </>
 
     )

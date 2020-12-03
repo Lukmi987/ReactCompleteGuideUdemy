@@ -4,6 +4,8 @@ import Tab from 'react-bootstrap/Tab';
 import Counter from './app/counter/containers//Counter';
 import UserForm from "./app/users/containers/UserForm";
 import UserList from './app/users/containers/UserList';
+import AuthForm from "./app/auth/containers/AuthForm";
+import Locations from "./app/ybusLocations/containers/Locations";
 import './App.css';
 
 const App = () =>  (
@@ -17,6 +19,12 @@ const App = () =>  (
             </Tab>
             <Tab eventKey="contact" title="User List" >
                 <UserList />
+            </Tab>
+            <Tab eventKey="signUp" title="Sign Up" >
+            <AuthForm />
+            </Tab>
+            <Tab eventKey="YbusLocations" title="Ybus Locations" >
+                <Locations />
             </Tab>
         </Tabs>
     </div>
