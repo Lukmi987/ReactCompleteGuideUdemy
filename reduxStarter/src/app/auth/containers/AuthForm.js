@@ -1,14 +1,15 @@
 import { connect } from 'react-redux';
-import { getCounterForm } from '../../../selectors/counterSelectors';
-import { processLoginForm } from '../actions';
+import { getExpireTime } from '../../../selectors/counterSelectors';
+import {logOut, processLoginForm} from '../actions';
 import AuthForm from "../components/AuthForm";
 
 const mapStateToProps = state => ({
-    counterForm: getCounterForm(state)
+   // expiresToken: getExpireTime(state)
 });
 
 const mapDispatchToProps = {
     processLoginForm,
+    logOut
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AuthForm);

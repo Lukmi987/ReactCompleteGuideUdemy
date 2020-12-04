@@ -1,12 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-const AuthForm = ({ processLoginForm }) => {
+const AuthForm = ({ processLoginForm,  logOut }) => {
     const [email, setEmail] = useState('');
     const [pwd, setPwd] = useState('');
     const [validated, setValidated] = useState(false);
     const [isSignup, setIsSignup] = useState(true);
+
+    // console.log('.........',expiresToken);
+    // useEffect((expiration)=> {
+    //     console.log('......... v useeffect');
+    //         setTimeout(() => {
+    //            // logOut
+    //         }, expiration * 1000);
+    // },[expiresToken]);
+
+    // checkAuthTimeout = (expirationTime) => () => {
+    //     setTimeout(() => {
+    //         //after expiration i call log out action logout()
+    //     }, expirationTime * 1000);
+    // }
+    //
+    // export const logout = () {
+    //     //call authLogout()
+    //     //where i updateObject (state, {token: null, userId: null})
+    // }
 
     const handleInputChange = (e) =>{
         const id = e.target.id;
@@ -66,6 +85,11 @@ const AuthForm = ({ processLoginForm }) => {
                 variant='danger'>
             Switch to {isSignup ? 'SIGNIN' : 'SIGNUP'}
         </Button>
+          <div>
+          <Button onClick={logOut} variant="primary" >
+           LogOut
+          </Button>
+          </div>
         </>
     )
 }

@@ -1,5 +1,6 @@
 import { put, select } from 'redux-saga/effects';
 import axios from 'axios';
+import {SET_AUTH_INFO} from "../../../constants/actionTypes";
 
 export function* loginUser(action) {
     const { email, pwd, isSignup } = action.user;
@@ -11,19 +12,12 @@ export function* loginUser(action) {
     }
     try {
           const response = yield axios.post(url,preparedData);
+          const loginAuthInfo = {idToken: response.data.idToken, userId: response.data.localId };
+          yield put({type: SET_AUTH_INFO, loginAuthInfo});
+          //yield put({type: });
       } catch (e) {
         console.log(e);
-        //dispatch(authFail())
+       // yield put({type: SET_AUTH_INFO, errorObject});
     }
 }
 
-// function updateUser(userId, userList, fname, lname) {
-//   const copyOfUserList = [...userList];
-//
-//   //console.log(copyOfUserList);
-//   const index = copyOfUserList.findIndex(user => user.id === userId);
-//   copyOfUserList[0].fname = fname;
-//   copyOfUserList[0].lname = lname;
-//
-//   return copyOfUserList;
-// }

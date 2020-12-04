@@ -18,7 +18,7 @@ const Locations = ({ locations, fetchLocations }) => {
             </thead>
             <tbody>
             {locations.map( location => (
-                <tr>
+                <tr key={location.code}>
                     <td>{location.country}</td>
                     <td>{location.code}</td>
                     <td>{location.cities}</td>
