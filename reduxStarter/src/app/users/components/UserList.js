@@ -3,10 +3,11 @@ import Table from  'react-bootstrap/Table';
 import Button from  'react-bootstrap/Button';
 import UserModal from "../../_common/modals/containers/UserModal";
 
-const UserList = ({userList, fetchUserList, removeUser, setUserModalStatus, setSelectedUser}) => {
+const UserList = ({userList, fetchUserList, removeUser, setUserModalStatus, setSelectedUser, userAuthInfo}) => {
  useEffect(() => {
-    fetchUserList();
-}, []);
+   console.log('...........userID token authe', userAuthInfo.idToken);
+   if(userAuthInfo.idToken) fetchUserList();
+}, [userAuthInfo.idToken]);
 
  const [edited, setEdited] = useState(false);
 

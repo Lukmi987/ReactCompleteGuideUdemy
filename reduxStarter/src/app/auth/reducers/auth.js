@@ -1,6 +1,6 @@
 import {SET_AUTH_INFO, UNSET_LOGGED_USER } from "../../../constants/actionTypes";
 
-const initialState = null;
+const initialState = {idToken: null}
 
 export default (state = initialState, action) => (
     action.type === SET_AUTH_INFO ? action.loginAuthInfo : state

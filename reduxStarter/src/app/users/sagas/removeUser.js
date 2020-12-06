@@ -3,12 +3,14 @@ import {FETCH_USER_LIST, STORE_USER_LIST} from "../../../constants/actionTypes";
 import axios from 'axios';
 import {deleteUser} from "../../../helpers/userHelpers";
 import {getUserList} from "../../../selectors/usersSelectors";
+import { getUserAuthInfo } from "../../../selectors/authSelectors";
 import {fetchUserList} from "./fetchUserList";
 
 export function* removeUser(action) {
     const {userId} = action;
     try {
-         const response = yield axios.delete(`https://react-hooks-update-4307d.firebaseio.com/ingredients/${userId}.json`);
+        const userAuthInfo = yield select(getUserAuthInfo);
+         const response = yield axios.delete(`https://react-hooks-update-4307d.firebaseio.com/ingredients/${userId}.json?auth=` + userAuthInfo.idToken);
          yield put({type: FETCH_USER_LIST});
          // const state =  yield select();
          //shallow copy not good, deep copy better
