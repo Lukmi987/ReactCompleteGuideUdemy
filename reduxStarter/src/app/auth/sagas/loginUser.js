@@ -13,6 +13,8 @@ export function* loginUser(action) {
     try {
           const response = yield axios.post(url,preparedData);
           const loginAuthInfo = {idToken: response.data.idToken, userId: response.data.localId };
+          //new Date without args give us current date,
+          localStorage.setItem('token', response.data.idToken);
           yield put({type: SET_AUTH_INFO, loginAuthInfo});
           //yield put({type: });
       } catch (e) {

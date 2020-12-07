@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import { Route } from 'react-router-dom';
 import {useDispatch, useSelector } from "react-redux";
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
@@ -11,20 +12,15 @@ import store from './configureStore';
 import {logOut} from "./app/auth/actions";
 import './App.css';
 
-
 const App = () =>  {
-  const state = store.getState();
   const dispatch = useDispatch();
   const logUserOut = () => dispatch(logOut());
   const test = () => console.log('click in app');
-  //const idToken = state.authentication.userAuthInfo.idToken;
-  //better to use useSelector or store.getState() , why it is not rerendered using store.getState();?
 
 const idToken = useSelector(state => state.authentication.userAuthInfo.idToken);
+    const tokenLgit ocalStorage = localStorage.getItem('token')
   useEffect(()=>{
-    console.log('hello from app in use effect',idToken);
-
-
+    console.log('hello from app in use effect',tokenLocalStorage);
   },[idToken,logUserOut])
 
   //how to get state  here ?
@@ -35,20 +31,22 @@ const idToken = useSelector(state => state.authentication.userAuthInfo.idToken);
                     <Counter />
                 </Tab>
                 <Tab eventKey="profile" title="User Form">
-                    <UserForm />
+                   <UserForm />
                 </Tab>
-                <Tab eventKey="contact" title="User List" >
-                    <UserList />
-                </Tab>
+
+                {idToken && <Tab eventKey="contact" title="User List" >
+                                <UserList />
+                            </Tab>
+                }
                 {!idToken ?
-                <Tab eventKey="authenticate" title="Authenticate" >
-                <AuthForm />
-                </Tab>
-                :
-                <Tab  eventKey="authenticate" title="Log Out" >
-                  <button onClick={logUserOut}>LogOut</button>
-                </Tab>
-              }
+                    <Tab eventKey="authenticate" title="Authenticate" >
+                    <AuthForm />
+                    </Tab>
+                    :
+                    <Tab  eventKey="authenticate" title="Log Out" >
+                      <button onClick={logUserOut}>LogOut</button>
+                    </Tab>
+                }
                 <Tab eventKey="YbusLocations" title="Ybus Locations" >
                     <Locations />
                 </Tab>

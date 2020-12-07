@@ -12,5 +12,7 @@
     <orderEntry type="module" module-name="server" />
     <orderEntry type="module" module-name="Toolbar" />
     <orderEntry type="module" module-name="auth--03-token" />
+    <orderEntry type="module" module-name="idos-ads" />
+    <orderEntry type="module" module-name="ReactCompleteGuideUdemy" />
   </component>
 </module>
