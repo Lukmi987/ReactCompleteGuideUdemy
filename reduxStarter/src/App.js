@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import { Route } from 'react-router-dom';
 import {useDispatch, useSelector } from "react-redux";
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
@@ -18,12 +17,12 @@ const App = () =>  {
   const test = () => console.log('click in app');
 
 const idToken = useSelector(state => state.authentication.userAuthInfo.idToken);
-    const tokenLgit ocalStorage = localStorage.getItem('token')
+    const tokenLocalStorage = localStorage.getItem('token')
   useEffect(()=>{
     console.log('hello from app in use effect',tokenLocalStorage);
   },[idToken,logUserOut])
 
-  //how to get state  here ?
+
     return(
         <div className="App">
             <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
