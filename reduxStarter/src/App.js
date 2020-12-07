@@ -9,6 +9,7 @@ import AuthForm from "./app/auth/containers/AuthForm";
 import Locations from "./app/ybusLocations/containers/Locations";
 import store from './configureStore';
 import {logOut} from "./app/auth/actions";
+import { ReactQueryDevtools } from 'react-query-devtools'
 import './App.css';
 
 const App = () =>  {
@@ -24,7 +25,9 @@ const idToken = useSelector(state => state.authentication.userAuthInfo.idToken);
 
 
     return(
+
         <div className="App">
+            <ReactQueryDevtools initialIsOpen />
             <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
                 <Tab eventKey="home" title="Home">
                     <Counter />
