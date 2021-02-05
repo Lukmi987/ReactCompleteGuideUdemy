@@ -3,6 +3,7 @@ import Table from 'react-bootstrap/Table';
 
 const Locations = ({ locations, fetchLocations }) => {
     useEffect(()=>{
+        console.log(typeof fetchLocations);
         fetchLocations();
     },[]);
 

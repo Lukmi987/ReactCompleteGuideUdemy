@@ -2,9 +2,9 @@ import React from 'react';
 
 import './CounterControl.css';
 
-const counterControl = (props) => (
-    <div className="CounterControl" onClick={props.clicked}>
-        {props.label}
+const counterControl = ({clicked, label}) => (
+    <div className="CounterControl" onClick={clicked}>
+        {label}
     </div>
 );
 

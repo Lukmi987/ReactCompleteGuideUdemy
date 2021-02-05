@@ -14,5 +14,10 @@
     <orderEntry type="module" module-name="auth--03-token" />
     <orderEntry type="module" module-name="idos-ads" />
     <orderEntry type="module" module-name="ReactCompleteGuideUdemy" />
+    <orderEntry type="module" module-name="NextJSStartUp" />
+    <orderEntry type="module" module-name="faq-2020" />
+    <orderEntry type="module" module-name="ui-lib" />
+    <orderEntry type="module" module-name="revive-adserver" />
+    <orderEntry type="module" module-name="jsNotesSA" />
   </component>
 </module>

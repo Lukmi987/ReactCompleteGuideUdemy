@@ -5,7 +5,8 @@ import {SET_COUNTER} from "../../../constants/actionTypes";
 
 
 export function* changeCounter(action) {
-  const operationType = action.operationType;
+  console.log('action',action)
+
   const currentCounter = yield select(getCounter);
   let result;
 

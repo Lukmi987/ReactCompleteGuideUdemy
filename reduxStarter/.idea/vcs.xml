@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/../../NextJSStartUp" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../../faq-2020" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../../../frontend" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../../../idos-ads" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../../jsNotesSA" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../../revive-adserver" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../../../ui-lib" vcs="Git" />
   </component>
 </project>

@@ -3,9 +3,10 @@ import CounterControl from '../../_common/components/CounterControl';
 import CounterOutput from '../../_common/components/CounterOutput';
 import { INCREMENT, DECREMENT, ADD, SUBTRACT } from '../../../constants/keys';
 import useCounter from "./useCounter";
+import {changeCounter} from "../actions";
 
-const Counter = ({testEffect }) => {
-  const {addCounter, counter, decrementCounter, incrementCounter, subtractCounter} = useCounter()
+const Counter = ({testEffect, changeCounter }) => {
+  const {addCounter, counter, decrementCounter, incrementCounter, subtractCounter } = useCounter()
 
   // const [counter1, setCounter1] = useState(0);
   // console.log(counter1);
@@ -18,7 +19,7 @@ const Counter = ({testEffect }) => {
       <div>
           <CounterOutput value={counter} />
           <CounterControl label={INCREMENT} clicked={() => {
-              incrementCounter()
+              changeCounter("INCREMENT");
           }} />
         <CounterControl label={DECREMENT} clicked={() => {
               decrementCounter()

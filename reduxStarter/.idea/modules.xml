@@ -2,13 +2,18 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../NextJSStartUp/.idea/NextJSStartUp.iml" filepath="$PROJECT_DIR$/../../NextJSStartUp/.idea/NextJSStartUp.iml" />
       <module fileurl="file://$PROJECT_DIR$/../.idea/ReactCompleteGuideUdemy.iml" filepath="$PROJECT_DIR$/../.idea/ReactCompleteGuideUdemy.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../../Toolbar/.idea/Toolbar.iml" filepath="$PROJECT_DIR$/../../../Toolbar/.idea/Toolbar.iml" />
       <module fileurl="file://$USER_HOME$/Downloads/auth--03-token/.idea/auth--03-token.iml" filepath="$USER_HOME$/Downloads/auth--03-token/.idea/auth--03-token.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../faq-2020/.idea/faq-2020.iml" filepath="$PROJECT_DIR$/../../../faq-2020/.idea/faq-2020.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../../frontend/.idea/frontend.iml" filepath="$PROJECT_DIR$/../../../frontend/.idea/frontend.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../../idos-ads/.idea/idos-ads.iml" filepath="$PROJECT_DIR$/../../../idos-ads/.idea/idos-ads.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../jsNotesSA/.idea/jsNotesSA.iml" filepath="$PROJECT_DIR$/../../../jsNotesSA/.idea/jsNotesSA.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/reduxStarter.iml" filepath="$PROJECT_DIR$/.idea/reduxStarter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../revive-adserver/.idea/revive-adserver.iml" filepath="$PROJECT_DIR$/../../../revive-adserver/.idea/revive-adserver.iml" />
       <module fileurl="file://$PROJECT_DIR$/../server/.idea/server.iml" filepath="$PROJECT_DIR$/../server/.idea/server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../ui-lib/.idea/ui-lib.iml" filepath="$PROJECT_DIR$/../../../ui-lib/.idea/ui-lib.iml" />
     </modules>
   </component>
 </project>

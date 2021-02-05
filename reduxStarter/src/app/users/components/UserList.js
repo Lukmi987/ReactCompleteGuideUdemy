@@ -11,7 +11,7 @@ const UserList = ({userList, fetchUserList, removeUser, setUserModalStatus, setS
             "https://api.github.com/repos/tannerlinsley/react-query"
         ).then((res) => res.json())
     );
-
+    console.log('jo moje data',data)
     useEffect(() => {
    console.log('...........userID token authe', userAuthInfo.idToken);
    if(userAuthInfo.idToken) fetchUserList();
